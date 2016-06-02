@@ -2,14 +2,14 @@ PROJECT = chronos
 
 DEPS = edown gen_leader gproc
 
-dep_gproc = git://github.com/uwiger/gproc 0.2.13.3
-dep_edown = https://github.com/esl/edown.git master
+dep_gproc = git://github.com/uwiger/gproc 0.6
+dep_edown = https://github.com/uwiger/edown master
 dep_gen_leader = https://github.com/abecciu/gen_leader_revival.git master
 
 
 TEST_DEPS = meck
 
-dep_meck = git://github.com/eproxus/meck 0.8.2
+dep_meck = git://github.com/eproxus/meck 0.8.4
 
 CT_SUITES = chronos
 
@@ -19,7 +19,7 @@ test_chronos: ERLC_OPTS := $(filter-out -Werror,$(ERLC_OPTS))
 
 example_beams: examples/*.erl
 
-examples: build example_beams
+examples: app example_beams
 	erlc -o examples examples/*.erl
 
 
