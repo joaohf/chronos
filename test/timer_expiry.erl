@@ -7,10 +7,15 @@
 
 -behaviour(gen_server).
 
--compile(export_all).
-
 %% API
--export([start_link/0]).
+-export([start_link/0,
+         stop/0,
+         start_server/1,
+         start_timer/3,
+         stop_timer/2,
+         expire/3,
+         timer_status/3,
+         last_timer_status/2]).
 
 
 
@@ -190,7 +195,7 @@ code_change(_OldVsn, State, _Extra) ->
 
 
 time_stamp() ->
-    {Mega, Sec, Micro} = now(),
+    {Mega, Sec, Micro} =  erlang:timestamp(),
     Mega * 1000000 * 1000000 + Sec * 1000000 + Micro.
 
 
